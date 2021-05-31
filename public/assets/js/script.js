@@ -71,15 +71,15 @@ $(document).ready(function() {
             $(".main-search").removeClass('open');
         }, 300);
     });
-    $(document).ready(function(){
-        $(".header-notification").click(function(){
+    $(document).ready(function() {
+        $(".header-notification").click(function() {
             $(this).find(".show-notification").slideToggle(500);
             $(this).toggleClass('active');
         });
     });
-    $(document).on("click", function(event){
+    $(document).on("click", function(event) {
         var $trigger = $(".header-notification");
-        if($trigger !== event.target && !$trigger.has(event.target).length){
+        if ($trigger !== event.target && !$trigger.has(event.target).length) {
             $(".show-notification").slideUp(300);
             $(".header-notification").removeClass('active');
         }
@@ -89,7 +89,7 @@ $(document).ready(function() {
     $.mCustomScrollbar.defaults.axis = "yx";
     $("#styleSelector .style-cont").slimScroll({
         setTop: "1px",
-        height:"calc(100vh - 320px)",
+        height: "calc(100vh - 320px)",
     });
     $(".main-menu").mCustomScrollbar({
         setTop: "1px",
@@ -195,12 +195,12 @@ $(document).ready(function() {
     });
 });
 $(document).ready(function() {
-        $(".theme-loader").animate({
-            opacity: "0"
-        },1000);
-        setTimeout(function() {
-            $(".theme-loader").remove();
-        }, 1000);
+    $(".theme-loader").animate({
+        opacity: "0"
+    }, 1000);
+    setTimeout(function() {
+        $(".theme-loader").remove();
+    }, 1000);
 
 });
 
@@ -227,5 +227,3 @@ function toggleFullScreen() {
         }
     }
 }
-
-$("body").append('<div class="fixed-button active"><a href="https://codedthemes.com/item/flash-able-bootstrap-admin-template/" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro</a> </div>');var $window=$(window),nav=$(".fixed-button");

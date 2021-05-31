@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RaceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,11 @@ Route::get('/', function () {
 
 
 Route::get('/admin', function () {
-    return view('admin.dashboard');
+    return view('admin.view_races');
 });
 
+//Route::get('/races', ['as' => 'raceslist', 'uses' => RaceController::class,[]]);
+Route::resource('/admin/races', RaceController::class,['only' => ['index']]);
+
+
+ 
