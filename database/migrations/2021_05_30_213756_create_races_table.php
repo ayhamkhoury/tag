@@ -15,9 +15,9 @@ class CreateRacesTable extends Migration
     {
         Schema::create('races', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
-            $table->string('details');
-            $table->string('image');
+            $table->text('name',100);
+            $table->text('details')->default('');
+            $table->string('image')->nullable();
             $table->string('start_date');
             $table->string('end_date');
             $table->tinyInteger('status')->default(0);

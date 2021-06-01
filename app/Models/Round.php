@@ -37,4 +37,8 @@ class Round extends Model
     public function Races(){
         return $this->belongsTo(Race::class);
     }
+
+    public function Drivers(){
+        return $this->belongsToMany(Driver::class);
+    }
 }

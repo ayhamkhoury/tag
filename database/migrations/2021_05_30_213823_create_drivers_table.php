@@ -13,10 +13,15 @@ class CreateDriversTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('drivers');
         Schema::create('drivers', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->string('details');
+            $table->string('image');
+            $table->tinyInteger('status')->default(0);
+             $table->timestamps();
+         });
     }
 
     /**

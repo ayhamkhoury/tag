@@ -27,12 +27,7 @@ class RaceFactory extends Factory
     {
         return [
           
-            'name' => Str::random(10),
-            'details'=> Str::random(40),
-            'image' => Str::random(40),
-            'start_date' =>  '2021-05-31 12:00:00',
-            'end_date' =>  '2021-06-01 12:00:00',
-             'status' => 1,
+            
              
         ];
     }

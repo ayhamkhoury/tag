@@ -13,14 +13,14 @@ Dashboard
             <!-- Basic table card start -->
             <div class="card">
                 <div class="card-header">
-                    <h5>Races</h5>
+                    <h5>{{ $pageTitle }}</h5>
                      <div class="card-header-right">
                         <ul class="list-unstyled card-option">
                             <li><i class="fa fa fa-wrench open-card-option"></i></li>
                             <li><i class="fa fa-window-maximize full-card"></i></li>
                             <li><i class="fa fa-minus minimize-card"></i></li>
                             <li><i class="fa fa-refresh reload-card"></i></li>
-                            <li><i class="fa fa-trash close-card"></i></li>
+                            <li><a href="{{ route('addrace') }}" ><i class="fa fa-plus"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -29,7 +29,7 @@ Dashboard
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                     
                                     <th>Race</th>
                                     <th>Start</th>
                                     <th>End</th>
@@ -39,11 +39,9 @@ Dashboard
                             </thead>
                             <tbody>
                                 @foreach ($races as $races)
-                                @php $i=0;
-                                $i++;
-                                @endphp
+                                
                                 <tr>
-                                    <td>{{ $i }}</td>
+                                  
                                     <td>{{ $races->name }}</td>
                                     <td>{{ $races->start_date }}</td>
                                     <td>{{ $races->end_date }}</td>
@@ -57,10 +55,10 @@ Dashboard
                                         @endphp
                                       </td>
                                     <td> 
-                                        <a href="" class="btn btn-sm btn-clean btn-icon" title="">
+                                        <a href="{{ route('editrace',[$races->id]) }}"  class="btn btn-sm btn-clean btn-icon" title="">
                                             <i class="fa fa-edit"></i>   
                                         </a>
-                                        <a onclick="return confirm('Are you sure?')" href="" class="btn btn-sm btn-clean btn-icon" title="">
+                                        <a onclick="return confirm('Are you sure?')" href="{{ route('deleterace',[$races->id]) }}" class="btn btn-sm btn-clean btn-icon" title="">
                                             <i class="fa fa-trash"></i>      
                                         </a>
                                      </td>

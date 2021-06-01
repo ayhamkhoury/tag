@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Round;
 use App\Models\Driver;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DriverFactory extends Factory
@@ -21,8 +23,11 @@ class DriverFactory extends Factory
      */
     public function definition()
     {
+        $round=Round::all()->random();
+        
+     
         return [
-            //
+             
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Round;
 use Illuminate\Database\Seeder;
 
 class RoundSeeder extends Seeder
@@ -13,6 +14,10 @@ class RoundSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Round::factory(10)->create();
+         
+
+        //\App\Models\Round::factory(10)->create();
+     
+         
     }
 }

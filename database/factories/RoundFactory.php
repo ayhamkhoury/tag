@@ -29,13 +29,7 @@ class RoundFactory extends Factory
          $race=Race::all()->random();
      
             return [
-                'name' => Str::random(10),
-                'details'=> Str::random(40),
-                'map_image' => Str::random(40),
-                'start_date' =>  Carbon::now(),
-                'end_date' =>   Carbon::now(),
-                'status' => 1,
-                'race_id'=>$race->id
+               
             ];
     
       
