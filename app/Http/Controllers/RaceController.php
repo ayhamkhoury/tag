@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Race;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RaceController extends Controller
 {
@@ -15,12 +16,9 @@ class RaceController extends Controller
     public function index()
     {
         $races=Race::all();
-         
-
-        //return response()->json($races, 200);
         $pageTitle = 'Races';
         $page_description = 'View Races';
-        return view('admin.view_races', compact('pageTitle', 'page_description', 'races'));
+        return view('admin.race.view_races', compact('pageTitle', 'page_description', 'races'));
     }
 
     /**
@@ -30,7 +28,11 @@ class RaceController extends Controller
      */
     public function create()
     {
-        //
+        $pageTitle = 'Add New Race';
+        $page_description = 'New Race';
+        return view('admin.race.add_race', compact('pageTitle', 'page_description'));
+
+       
     }
 
     /**
@@ -39,9 +41,63 @@ class RaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request,Race $race)
+    { 
+  
+        $fileNameToStore='';
+        $rules = [
+            'name' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+        $customMessages = [
+            'name|required' => 'you forgot  name'
+        ];
+    
+        $validate = Validator::make($request->all(), $rules, $customMessages);
+        $messages = $validate->messages();
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($messages);
+        }
+        if ($request->has('name')) {
+            $race->name = $request->name;
+            $race->status = 1;
+        }
+        if ($request->has('details')) {
+            $race->details = $request->details;
+          
+        }
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName ();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename. '_'. time().'.'.$extension;
+          
+            $race->image = $request->file('image')->storeAs('public/image', $fileNameToStore);
+        }
+        if ($request->has('start_date')) {
+            $race->start_date = $request->start_date; 
+        }
+        if ($request->has('end_date')) {
+            $race->end_date = $request->end_date;
+        }
+        if ($request->has('image')) {
+            $race->image = $request->image;
+        }
+        if (!$race->isDirty()) {
+            return redirect()->back()->withErrors(['Nothing inserted']);
+        }
+        $race = Race::create([
+            'name' => $request['name'],
+            'status' => 1,
+            'details' => $request['details'],
+            'image' => $fileNameToStore,
+            'start_date' => $request['start_date'],
+            'end_date' => $request['end_date'],
+        ]);
+        return redirect()->route('listraces');
+        
     }
 
     /**
@@ -61,9 +117,13 @@ class RaceController extends Controller
      * @param  \App\Models\Race  $race
      * @return \Illuminate\Http\Response
      */
-    public function edit(Race $race)
+    public function edit(Request $request,Race $race)
     {
         //
+        $race = Race::findOrFail($request->id);
+        $pageTitle =  'Edit Race : ' ; 
+        $page_description = $race->name;
+        return view('admin.race.edit_race', compact('pageTitle', 'page_description','race'));
     }
 
     /**
@@ -73,9 +133,67 @@ class RaceController extends Controller
      * @param  \App\Models\Race  $race
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Race $race)
+    public function update(Request $request)
     {
-        //
+        $race = Race::findOrFail($request->id);
+        $fileNameToStore='';
+        $rules = [
+            'name' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+        $customMessages = [
+            'name|required' => 'you forgot  name'
+        ];
+
+        $validate = Validator::make($request->all(), $rules, $customMessages);
+        $messages = $validate->messages();
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($messages);
+        }
+
+        if ($request->has('name')) {
+            $race->name = $request->name;
+            $race->status = 1;
+        }
+        if ($request->has('details')) {
+            $race->details = $request->details;
+          
+        }
+        if ($request->hasFile('image')) {
+           // dd($request);
+            $filenameWithExt = $request->file('image')->getClientOriginalName ();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename. '_'. time().'.'.$extension;
+          
+            $race->image = $request->file('image')->storeAs('public/image', $fileNameToStore);
+
+
+
+        }
+        if ($request->has('start_date')) {
+            $race->start_date = $request->start_date;
+           
+        }
+        if ($request->has('end_date')) {
+            $race->end_date = $request->end_date;
+          
+        }
+        if ($request->has('image')) {
+            $race->image = $request->image;
+          
+        }
+
+        if (!$race->isDirty()) {
+            return redirect()->back()->withErrors(['Nothing to update']);
+        }
+
+        $race->save();
+        return redirect()->route('listraces');
+
+
     }
 
     /**
@@ -84,8 +202,10 @@ class RaceController extends Controller
      * @param  \App\Models\Race  $race
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Race $race)
+    public function destroy(Request $request,Race $race)
     {
-        //
+        $race = Race::findOrFail($request->id);
+        $race->delete();
+        return redirect()->back();
     }
 }
