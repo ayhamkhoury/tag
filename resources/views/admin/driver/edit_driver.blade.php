@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.third')
 
 @section('title')
 Dashboard
@@ -21,14 +21,14 @@ Dashboard
                         </div>
                         <div class="card-block">
                             <h4 class="sub-title">Inputs</h4>
-                            <form action="{{ route('updaterace') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('updatedriver') }}" method="POST" enctype="multipart/form-data">
                                 
                                 {{ csrf_field() }}
                               
                                 <div class="form-group row">
-                                    <input name="id" type="hidden" value="{{ $race->id }}" class="form-control"/>
+                                    <input name="id" type="hidden" value="{{ $driver->id }}" class="form-control"/>
                                      
-                                     <img src="{{ Storage::url($race->image) }}" />
+                                     <img src="{{ Storage::url($driver->image) }}" />
                                     <?php
                                     ?>
                                 </div>
@@ -36,13 +36,13 @@ Dashboard
                                     
                                     <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="name" class="form-control" placeholder="Type your Race Name" value="{{ $race->name }}">
+                                        <input type="text" name="name" class="form-control" placeholder="Type your Race Name" value="{{ $driver->name }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Details</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="details" class="form-control" placeholder="Type your Race Details" value="{{ $race->details }}">
+                                        <input type="text" name="details" class="form-control" placeholder="Type your Race Details" value="{{ $driver->details }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -51,18 +51,8 @@ Dashboard
                                         <input type="file" class="form-control" name="image">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Start Date</label>
-                                    <div class="col-sm-10">
-                                        <input type="date" name="start_date" class="form-control" placeholder="Type your Race Start Date" value="{{ $race->start_date }}">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">End Date</label>
-                                    <div class="col-sm-10">
-                                        <input type="date" name="end_date" class="form-control" placeholder="Type your Race End Date" value="{{ $race->end_date }}">
-                                    </div>
-                                </div>
+                               
+                                
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">

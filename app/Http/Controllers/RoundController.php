@@ -31,7 +31,7 @@ class RoundController extends Controller
     {
         $pageTitle = 'Add New Round';
         $page_description = 'New Round';
-        $races=Race::all();
+        $races = Race::where('status','1')->get();
         return view('admin.round.add_round', compact('pageTitle', 'page_description','races'));
     }
 
@@ -65,8 +65,10 @@ class RoundController extends Controller
              
         }
         if ($request->has('name')) {
-            $round->name = $request->name;
-            $round->status = 1;
+            $round->name = $request->name; 
+        }
+        if ($request->has('status')) {
+            $round->status = $request->status; 
         }
         if ($request->has('details')) {
             $round->details = $request->details;
@@ -94,7 +96,7 @@ class RoundController extends Controller
         }
         $round = Round::create([
             'name' => $request['name'],
-            'status' => 1,
+            'status' => $request['status'] ,
             'details' => $request['details'],
             'map_image' => $fileNameToStore,
             'start_date' => $request['start_date'],
@@ -125,8 +127,8 @@ class RoundController extends Controller
     {
         //
         $round = Round::findOrFail($request->id);
-        $race = Race::findOrFail($round->race_id);
-        $another_races = Race::where('id', '!=', $round->race_id)->get();
+        $race = Race::select('*')->where('status', '=','1')->where('id', '=',$round->race_id)->get();
+        $another_races = Race::select('*')->where('status', '=','1')->where('id', '!=', $round->race_id)->get();
         $pageTitle =  'Edit Round : ' ; 
         $page_description = $round->name;
        return view('admin.round.edit_round', compact('pageTitle', 'page_description','round','race','another_races'));
@@ -164,7 +166,9 @@ class RoundController extends Controller
 
         if ($request->has('name')) {
             $round->name = $request->name;
-            $round->status = 1;
+        }
+        if ($request->has('status')) {
+            $round->status = $request->status;
         }
         if ($request->has('details')) {
             $round->details = $request->details;

@@ -62,8 +62,11 @@ class RaceController extends Controller
         }
         if ($request->has('name')) {
             $race->name = $request->name;
-            $race->status = 1;
         }
+        if ($request->has('status')) {
+            $race->status = $request->status;
+        }
+
         if ($request->has('details')) {
             $race->details = $request->details;
           
@@ -90,7 +93,7 @@ class RaceController extends Controller
         }
         $race = Race::create([
             'name' => $request['name'],
-            'status' => 1,
+            'status' => $request['status'],
             'details' => $request['details'],
             'image' => $fileNameToStore,
             'start_date' => $request['start_date'],
@@ -155,7 +158,9 @@ class RaceController extends Controller
 
         if ($request->has('name')) {
             $race->name = $request->name;
-            $race->status = 1;
+        }
+        if ($request->has('status')) {
+            $race->status = $request->status;
         }
         if ($request->has('details')) {
             $race->details = $request->details;

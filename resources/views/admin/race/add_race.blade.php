@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.default')
 
 @section('title')
 Dashboard
@@ -52,6 +52,16 @@ Dashboard
                                     <label class="col-sm-2 col-form-label">End Date</label>
                                     <div class="col-sm-10">
                                         <input type="date" name="end_date" class="form-control" placeholder="Type your Race End Date">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Status</label>
+                                    <div class="col-sm-10">
+                                        <select  name="status" class="form-control">
+                                            <option value="1" selected>Active</option>
+                                            <option value="0">Not Active</option>
+                                        </select>
+      
                                     </div>
                                 </div>
                                 <div class="form-group row">

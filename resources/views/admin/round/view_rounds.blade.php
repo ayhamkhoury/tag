@@ -47,10 +47,14 @@ Dashboard
                                     <td>{{ $rounds->end_date }}</td>
                                     <td>
                                         @php
+                                            if($rounds->status==2):
+                                            echo 'Current';
+                                            endif;
                                             if($rounds->status==1):
-                                            echo 'Active';
-                                            else:
-                                            echo 'Disabled';
+                                            echo 'Next';
+                                            endif;
+                                            if($rounds->status==0):
+                                            echo 'Previous';
                                          endif;
                                         @endphp
                                       </td>

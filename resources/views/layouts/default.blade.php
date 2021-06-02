@@ -20,20 +20,20 @@
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <!-- waves.css -->
-    <link rel="stylesheet" href="../assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../assets/pages/waves/css/waves.min.css" type="text/css" media="all">
     <!-- Required Fremwork -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap/css/bootstrap.min.css">
     <!-- waves.css -->
-    <link rel="stylesheet" href="../assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../assets/pages/waves/css/waves.min.css" type="text/css" media="all">
     <!-- themify-icons line icon -->
-    <link rel="stylesheet" type="text/css" href="../assets/icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/icon/themify-icons/themify-icons.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="../assets/icon/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/icon/font-awesome/css/font-awesome.min.css">
     <!-- ico font -->
-    <link rel="stylesheet" type="text/css" href="../assets/icon/icofont/css/icofont.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/icon/icofont/css/icofont.css">
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/jquery.mCustomScrollbar.css">
 </head>
 
 <body>
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <a href="index.html">
-                            <img class="img-fluid" src="../assets/images/logo.png" alt="Theme-Logo" />
+                            <img class="img-fluid" src="../../assets/images/logo.png" alt="Theme-Logo" />
                         </a>
                         <a class="mobile-options waves-effect waves-light">
                             <i class="ti-more"></i>
@@ -110,7 +110,7 @@
                                     </li>
                                     <li class="waves-effect waves-light">
                                         <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="../assets/images/avatar-2.jpg" alt="Generic placeholder image">
+                                            <img class="d-flex align-self-center img-radius" src="../../assets/images/avatar-2.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h5 class="notification-user">John Doe</h5>
                                                 <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -120,7 +120,7 @@
                                     </li>
                                     <li class="waves-effect waves-light">
                                         <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="../assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                            <img class="d-flex align-self-center img-radius" src="../../assets/images/avatar-4.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h5 class="notification-user">Joseph William</h5>
                                                 <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -130,7 +130,7 @@
                                     </li>
                                     <li class="waves-effect waves-light">
                                         <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="../assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                                            <img class="d-flex align-self-center img-radius" src="../../assets/images/avatar-3.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h5 class="notification-user">Sara Soudein</h5>
                                                 <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -142,7 +142,7 @@
                             </li>
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
-                                    <img src="../assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                                    <img src="../../assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
                                     <span>John Doe</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
@@ -187,7 +187,7 @@
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="">
                                 <div class="main-menu-header">
-                                    <img class="img-80 img-radius" src="../assets/images/avatar-4.jpg" alt="User-Profile-Image">
+                                    <img class="img-80 img-radius" src="../../assets/images/avatar-4.jpg" alt="User-Profile-Image">
                                     <div class="user-details">
                                         <span id="more-details">John Doe<i class="fa fa-caret-down"></i></span>
                                     </div>
@@ -457,19 +457,19 @@
     <![endif]-->
     <!-- Warning Section Ends -->
     <!-- Required Jquery -->
-    <script type="text/javascript" src="../assets/js/jquery/jquery.min.js "></script>
-    <script type="text/javascript" src="../assets/js/jquery-ui/jquery-ui.min.js "></script>
-    <script type="text/javascript" src="../assets/js/popper.js/popper.min.js"></script>
-    <script type="text/javascript" src="../assets/js/bootstrap/js/bootstrap.min.js "></script>
+    <script type="text/javascript" src="../../assets/js/jquery/jquery.min.js "></script>
+    <script type="text/javascript" src="../../assets/js/jquery-ui/jquery-ui.min.js "></script>
+    <script type="text/javascript" src="../../assets/js/popper.js/popper.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap/js/bootstrap.min.js "></script>
     <!-- waves js -->
-    <script src="../assets/pages/waves/js/waves.min.js"></script>
+    <script src="../../assets/pages/waves/js/waves.min.js"></script>
     <!-- jquery slimscroll js -->
-    <script type="text/javascript" src="../assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="../../assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
     <!-- Custom js -->
-    <script src="../assets/js/pcoded.min.js"></script>
-    <script src="../assets/js/vertical/vertical-layout.min.js"></script>
-    <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript" src="../assets/js/script.js"></script>
+    <script src="../../assets/js/pcoded.min.js"></script>
+    <script src="../../assets/js/vertical/vertical-layout.min.js"></script>
+    <script src="../../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/script.js"></script>
     @yield("scripts")
 </body>
 

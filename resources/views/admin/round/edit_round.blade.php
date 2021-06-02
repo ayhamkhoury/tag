@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.third')
 
 @section('title')
 Dashboard
@@ -35,13 +35,16 @@ Dashboard
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Race</label>
                                     <div class="col-sm-10">
-                                        <select  name="race_id" class="form-control">
-                                           
-                                          
+                                        <select  name="race_id" class="form-control">  
+                                            @foreach ($race as $race)
+                                                
+                                                                               
                                             <option selected value="{{ $race->id }}">{{ $race->name }}</option>
+                                            @endforeach   
                                             @foreach ($another_races as $another_races)
                                             <option value="{{ $another_races->id }}">{{ $another_races->name }}</option>
                                             @endforeach
+
                                            
                                         </select>
                                     </div>
@@ -77,6 +80,29 @@ Dashboard
                                         <input type="date" name="end_date" class="form-control" placeholder="Type your Race End Date" value="{{ $round->end_date }}">
                                     </div>
                                 </div>
+
+                                <?php $status=[0=>0,1=>1,2=>2];
+                                $round_ar=[$round->status=>$round->status];
+                                $diff=array_diff_assoc($status, $round_ar);
+                                $values=[0=>"Previous",1=>"Next",2=>"Current"];
+                                $key=array_keys($diff);
+                                
+                               ?>
+                            
+ 
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Status</label>
+                                    <div class="col-sm-10">
+                                        <select  name="status" class="form-control">
+                                            <option value="{{ $round->status }}" selected>{{ $values[$round->status] }}</option>
+                                            @foreach($diff as $key => $val)
+                                            <option value="{{ $key }}" >{{ $values[$val] }}</option>
+                                              @endforeach
+                                        </select>
+      
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.third')
 
 @section('title')
 Dashboard
@@ -61,6 +61,26 @@ Dashboard
                                     <label class="col-sm-2 col-form-label">End Date</label>
                                     <div class="col-sm-10">
                                         <input type="date" name="end_date" class="form-control" placeholder="Type your Race End Date" value="{{ $race->end_date }}">
+                                    </div>
+                                </div>
+                                <?php $status=[0=>0,1=>1];
+                                $diff=array_diff_assoc($status, [$race->status=>$race->status]);
+                                $values=[0=>"Diabled",1=>"Acitve"];
+                                $key=array_keys($diff);
+                                
+                               ?>
+                             
+                               
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Status</label>
+                                    <div class="col-sm-10">
+                                        <select  name="status" class="form-control">
+                                            <option value="{{ $race->status }}" selected>{{ $values[$race->status] }}</option>
+                                            @foreach($diff as $key => $val)
+                                            <option value="{{ $key }}" >{{ $values[$val] }}</option>
+                                              @endforeach
+                                        </select>
+      
                                     </div>
                                 </div>
                                 <div class="form-group row">
