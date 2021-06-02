@@ -19,6 +19,7 @@
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- waves.css -->
     <link rel="stylesheet" href="../../../assets/pages/waves/css/waves.min.css" type="text/css" media="all">
     <!-- Required Fremwork -->
@@ -457,6 +458,8 @@
     <![endif]-->
     <!-- Warning Section Ends -->
     <!-- Required Jquery -->
+
+
     <script type="text/javascript" src="../../../assets/js/jquery/jquery.min.js "></script>
     <script type="text/javascript" src="../../../assets/js/jquery-ui/jquery-ui.min.js "></script>
     <script type="text/javascript" src="../../../assets/js/popper.js/popper.min.js"></script>

@@ -51,8 +51,40 @@ Dashboard
                                         <input type="file" class="form-control" name="image">
                                     </div>
                                 </div>
-                               
+
+                                <?php $status=[0=>0,1=>1];
+                                $diff=array_diff_assoc($status, [$driver->status=>$driver->status]);
+                                $values=[0=>"Diabled",1=>"Acitve"];
+                                $key=array_keys($diff);
                                 
+                               ?>                               
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Status</label>
+                                    <div class="col-sm-10">
+                                        <select  name="status" class="form-control">
+                                            <option value="{{ $driver->status }}" selected>{{ $values[$driver->status] }}</option>
+                                            @foreach($diff as $key => $val)
+                                            <option value="{{ $key }}" >{{ $values[$val] }}</option>
+                                              @endforeach
+                                        </select>
+      
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Rounds</label>
+                                    <div class="col-sm-10">
+                                        <select name="round_id[]" class="js-example-basic-single form-control" multiple name="state">
+                                            @foreach ($rounds as $round )
+                                                <option @if (in_array($round->id,$driver_rounds))
+                                                    selected 
+                                                @endif value="{{ $round->id }}">{{$round->name  }}</option>
+                                            @endforeach
+                                           
+                                          </select>
+      
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
@@ -88,6 +120,14 @@ Dashboard
 
 @endsection
 
-
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script >
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+
+
+</script>
+
 @endsection

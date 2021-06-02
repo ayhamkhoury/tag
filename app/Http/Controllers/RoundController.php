@@ -47,8 +47,6 @@ class RoundController extends Controller
         $rules = [
             'race_id' => 'required',
             'name' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         $customMessages = [
@@ -147,8 +145,6 @@ class RoundController extends Controller
         $rules = [
             'race_id' => 'required',
             'name' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         $customMessages = [

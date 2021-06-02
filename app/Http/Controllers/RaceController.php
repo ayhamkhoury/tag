@@ -47,8 +47,6 @@ class RaceController extends Controller
         $fileNameToStore='';
         $rules = [
             'name' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         $customMessages = [
@@ -142,8 +140,6 @@ class RaceController extends Controller
         $fileNameToStore='';
         $rules = [
             'name' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         $customMessages = [

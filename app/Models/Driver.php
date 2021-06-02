@@ -32,7 +32,7 @@ class Driver extends Model
     }
 
     public function rounds(){
-        return $this->belongsToMany(Rounds::class)->withTimestamps();
+        return $this->belongsToMany(Round::class,'round_driver');
     }
 }
 

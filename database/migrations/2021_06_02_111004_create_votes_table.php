@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoundDriverTable extends Migration
+class CreateVotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateRoundDriverTable extends Migration
      */
     public function up()
     {
-        Schema::create('round_driver', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->string('round_id');
-            $table->string('driver_id');
+             $table->text('details')->nullable();
+            $table->string('start_date');
+            $table->string('end_date');
+            $table->tinyInteger('status')->default(0);
+            $table->timestamps();
             $table->foreign('round_id')->references('id')->on('rounds');
-            $table->foreign('driver_id')->references('id')->on('drivers');
-
         });
     }
 
@@ -29,6 +32,6 @@ class CreateRoundDriverTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('round_driver');
+        Schema::dropIfExists('votes');
     }
 }

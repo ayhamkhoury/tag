@@ -2,29 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
-class Round extends Model
+class Vote extends Model
 {
     use HasFactory;
-    
     protected $keyType = 'string';
     public $incrementing = false;
 
-
     protected $fillable = [
-      
-        'name',
+        'round_id',
         'details',
-        'map_image',
         'start_date',
         'end_date',
-        'status',
-        'race_id',
+        'status'
     ];
-
 
     public static function boot()
     {
@@ -34,15 +28,7 @@ class Round extends Model
         });
     }
 
-    public function race(){
-        return $this->belongsTo(Race::class);
-    }
-
-    public function drivers(){
-        return $this->hasMany(Driver::class);
-    }
-
-    public function vote(){
-        return $this->belongsToMany(Vote::class);
+    public function rounds(){
+        return $this->has(Round::class);
     }
 }
