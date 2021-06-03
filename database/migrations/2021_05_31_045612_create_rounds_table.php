@@ -17,10 +17,11 @@ class CreateRoundsTable extends Migration
         Schema::create('rounds', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('details')->nullable()->default(NULL);
-            $table->string('map_image');
-            $table->string('start_date');
-            $table->string('end_date');      
+            $table->string('details')->nullable();
+            $table->string('racetrack')->nullable();
+            $table->string('map_image')->nullable();
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();     
             $table->tinyInteger('status')->default(0);
             $table->string('race_id');
             $table->timestamps();

@@ -4,7 +4,7 @@
 Dashboard
 @endsection
 
-@section('content');
+@section('content')
  
 <div class="main-body">
     <div class="page-wrapper">
@@ -40,13 +40,19 @@ Dashboard
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="name" class="form-control" placeholder="Type your Race Name">
+                                        <input type="text" name="name" class="form-control" placeholder="Type Round Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Round Track</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="racetrack" class="form-control" placeholder="Type Round Track">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Details</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="details" class="form-control" placeholder="Type your Race Details">
+                                        <input type="text" name="details" class="form-control" placeholder="Type round details">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -58,13 +64,13 @@ Dashboard
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Start Date</label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="start_date" class="form-control" placeholder="Type your Race Start Date">
+                                        <input type="date" name="start_date" class="form-control" placeholder="Type Round Start Date">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">End Date</label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="end_date" class="form-control" placeholder="Type your Race End Date">
+                                        <input type="date" name="end_date" class="form-control" placeholder="Type Round  End Date">
                                     </div>
                                 </div>
                                 <div class="form-group row">

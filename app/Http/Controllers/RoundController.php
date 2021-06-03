@@ -58,50 +58,124 @@ class RoundController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->withErrors($messages);
         }
-        if ($request->has('race_id')) {
-            $round->race_id = $request->race_id;
-             
-        }
-        if ($request->has('name')) {
-            $round->name = $request->name; 
-        }
-        if ($request->has('status')) {
-            $round->status = $request->status; 
-        }
-        if ($request->has('details')) {
-            $round->details = $request->details;
+
+       
+        
+        if($request->status==2)
+        {
+           $round_check=Round::where('status','=','2')->get();
           
+           if($round_check->count()>=1)
+           {   
+            return redirect()->back()->withErrors('only one round can be live');
+           }
+           else{
+
+            if ($request->has('race_id')) {
+                $round->race_id = $request->race_id;
+                 
+            }
+            if ($request->has('name')) {
+                $round->name = $request->name; 
+            }
+            if ($request->has('status')) {
+                $round->status = $request->status; 
+            }
+            if ($request->has('racetrack')) {
+                $round->racetrack = $request->racetrack; 
+            }
+            if ($request->has('details')) {
+                $round->details = $request->details;
+              
+            }
+            if ($request->hasFile('image')) {
+                $filenameWithExt = $request->file('image')->getClientOriginalName ();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $fileNameToStore = $filename. '_'. time().'.'.$extension;
+              
+                $round->map_image = $request->file('image')->storeAs('public/image', $fileNameToStore);
+            }
+            if ($request->has('start_date')) {
+                $round->start_date = $request->start_date; 
+            }
+            if ($request->has('end_date')) {
+                $round->end_date = $request->end_date;
+            }
+            if ($request->has('image')) {
+                $round->map_image = $request->image;
+            }
+            if (!$round->isDirty()) {
+                return redirect()->back()->withErrors(['Nothing inserted']);
+            }
+            $round = Round::create([
+                'name' => $request['name'],
+                'status' => $request['status'] ,
+                'racetrack' => $request['racetrack'] ,
+                'details' => $request['details'],
+                'map_image' => $fileNameToStore,
+                'start_date' => $request['start_date'],
+                'end_date' => $request['end_date'],
+                'race_id' => $request['race_id'],
+            ]);
+            return redirect()->route('listrounds');
+
+           }
         }
-        if ($request->hasFile('image')) {
-            $filenameWithExt = $request->file('image')->getClientOriginalName ();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $filename. '_'. time().'.'.$extension;
-          
-            $round->map_image = $request->file('image')->storeAs('public/image', $fileNameToStore);
+        else{
+
+            if ($request->has('race_id')) {
+                $round->race_id = $request->race_id;
+                 
+            }
+            if ($request->has('name')) {
+                $round->name = $request->name; 
+            }
+            if ($request->has('racetrack')) {
+                $round->racetrack = $request->racetrack; 
+            }
+            if ($request->has('status')) {
+                $round->status = $request->status; 
+            }
+            if ($request->has('details')) {
+                $round->details = $request->details;
+              
+            }
+            if ($request->hasFile('image')) {
+                $filenameWithExt = $request->file('image')->getClientOriginalName ();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $fileNameToStore = $filename. '_'. time().'.'.$extension;
+              
+                $round->map_image = $request->file('image')->storeAs('public/image', $fileNameToStore);
+            }
+            if ($request->has('start_date')) {
+                $round->start_date = $request->start_date; 
+            }
+            if ($request->has('end_date')) {
+                $round->end_date = $request->end_date;
+            }
+            if ($request->has('image')) {
+                $round->map_image = $request->image;
+            }
+            if (!$round->isDirty()) {
+                return redirect()->back()->withErrors(['Nothing inserted']);
+            }
+            $round = Round::create([
+                'name' => $request['name'],
+                'status' => $request['status'] ,
+                'racetrack' => $request['racetrack'] ,
+                'details' => $request['details'],
+                'map_image' => $fileNameToStore,
+                'start_date' => $request['start_date'],
+                'end_date' => $request['end_date'],
+                'race_id' => $request['race_id'],
+            ]);
+            return redirect()->route('listrounds');
+
         }
-        if ($request->has('start_date')) {
-            $round->start_date = $request->start_date; 
-        }
-        if ($request->has('end_date')) {
-            $round->end_date = $request->end_date;
-        }
-        if ($request->has('image')) {
-            $round->map_image = $request->image;
-        }
-        if (!$round->isDirty()) {
-            return redirect()->back()->withErrors(['Nothing inserted']);
-        }
-        $round = Round::create([
-            'name' => $request['name'],
-            'status' => $request['status'] ,
-            'details' => $request['details'],
-            'map_image' => $fileNameToStore,
-            'start_date' => $request['start_date'],
-            'end_date' => $request['end_date'],
-            'race_id' => $request['race_id'],
-        ]);
-        return redirect()->route('listrounds');
+        
+       
     }
 
     /**
@@ -156,52 +230,124 @@ class RoundController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->withErrors($messages);
         }
-        if ($request->has('race_id')) {
-            $round->race_id = $request->race_id; 
-        }
 
-        if ($request->has('name')) {
-            $round->name = $request->name;
-        }
-        if ($request->has('status')) {
-            $round->status = $request->status;
-        }
-        if ($request->has('details')) {
-            $round->details = $request->details;
+
+        if($request->status==2)
+        {
+           $round_check=Round::where('status','=','2')->get();
           
+           if($round_check->count()>=1)
+           {   
+            return redirect()->back()->withErrors('only one round can be live');
+           }
+           else{
+            if ($request->has('race_id')) {
+                $round->race_id = $request->race_id; 
+            }
+    
+            if ($request->has('name')) {
+                $round->name = $request->name;
+            }
+            if ($request->has('racetrack')) {
+                $round->racetrack = $request->racetrack;
+            }
+            if ($request->has('status')) {
+                $round->status = $request->status;
+            }
+            if ($request->has('details')) {
+                $round->details = $request->details;
+              
+            }
+            if ($request->hasFile('image')) {
+               // dd($request);
+                $filenameWithExt = $request->file('image')->getClientOriginalName ();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $fileNameToStore = $filename. '_'. time().'.'.$extension;
+              
+                $round->map_image = $request->file('image')->storeAs('public/image', $fileNameToStore);
+    
+    
+    
+            }
+            if ($request->has('start_date')) {
+                $round->start_date = $request->start_date;
+               
+            }
+            if ($request->has('end_date')) {
+                $round->end_date = $request->end_date;
+              
+            }
+            if ($request->has('image')) {
+                $round->image = $request->image;
+              
+            }
+    
+            if (!$round->isDirty()) {
+                return redirect()->back()->withErrors(['Nothing to update']);
+            }
+    
+            $round->save();
+            return redirect()->route('listrounds');
+    
+
+           }
         }
-        if ($request->hasFile('image')) {
-           // dd($request);
-            $filenameWithExt = $request->file('image')->getClientOriginalName ();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $filename. '_'. time().'.'.$extension;
-          
-            $round->map_image = $request->file('image')->storeAs('public/image', $fileNameToStore);
+        else{
+
+            if ($request->has('race_id')) {
+                $round->race_id = $request->race_id; 
+            }
+    
+            if ($request->has('name')) {
+                $round->name = $request->name;
+            }
+            if ($request->has('racetrack')) {
+                $round->racetrack = $request->racetrack;
+            }
+            if ($request->has('status')) {
+                $round->status = $request->status;
+            }
+            if ($request->has('details')) {
+                $round->details = $request->details;
+              
+            }
+            if ($request->hasFile('image')) {
+               // dd($request);
+                $filenameWithExt = $request->file('image')->getClientOriginalName ();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $fileNameToStore = $filename. '_'. time().'.'.$extension;
+              
+                $round->map_image = $request->file('image')->storeAs('public/image', $fileNameToStore);
+    
+    
+    
+            }
+            if ($request->has('start_date')) {
+                $round->start_date = $request->start_date;
+               
+            }
+            if ($request->has('end_date')) {
+                $round->end_date = $request->end_date;
+              
+            }
+            if ($request->has('image')) {
+                $round->image = $request->image;
+              
+            }
+    
+            if (!$round->isDirty()) {
+                return redirect()->back()->withErrors(['Nothing to update']);
+            }
+    
+            $round->save();
+            return redirect()->route('listrounds');
+    
+        }
 
 
-
-        }
-        if ($request->has('start_date')) {
-            $round->start_date = $request->start_date;
-           
-        }
-        if ($request->has('end_date')) {
-            $round->end_date = $request->end_date;
-          
-        }
-        if ($request->has('image')) {
-            $round->image = $request->image;
-          
-        }
-
-        if (!$round->isDirty()) {
-            return redirect()->back()->withErrors(['Nothing to update']);
-        }
-
-        $round->save();
-        return redirect()->route('listrounds');
-
+       
     }
 
     /**

@@ -32,7 +32,6 @@ class RaceController extends Controller
         $page_description = 'New Race';
         return view('admin.race.add_race', compact('pageTitle', 'page_description'));
 
-       
     }
 
     /**
@@ -44,6 +43,15 @@ class RaceController extends Controller
     public function store(Request $request,Race $race)
     { 
   
+       $race=Race::where('status','=','1');
+       if($race->count()==1)
+       {
+        return redirect()->back()->withErrors('only one Race can be active');
+       }
+       else
+       {
+
+        
         $fileNameToStore='';
         $rules = [
             'name' => 'required',
@@ -63,6 +71,14 @@ class RaceController extends Controller
         }
         if ($request->has('status')) {
             $race->status = $request->status;
+        }
+
+        if ($request->has('type')) {
+            $race->type = $request->type;
+        }
+
+        if ($request->has('cup')) {
+            $race->cup = $request->cup;
         }
 
         if ($request->has('details')) {
@@ -91,6 +107,8 @@ class RaceController extends Controller
         }
         $race = Race::create([
             'name' => $request['name'],
+            'type' => $request['type'],
+            'cup' => $request['cup'],
             'status' => $request['status'],
             'details' => $request['details'],
             'image' => $fileNameToStore,
@@ -98,6 +116,8 @@ class RaceController extends Controller
             'end_date' => $request['end_date'],
         ]);
         return redirect()->route('listraces');
+       }
+
         
     }
 
@@ -154,6 +174,12 @@ class RaceController extends Controller
 
         if ($request->has('name')) {
             $race->name = $request->name;
+        }
+        if ($request->has('type')) {
+            $race->type = $request->type;
+        }
+        if ($request->has('cup')) {
+            $race->cup = $request->cup;
         }
         if ($request->has('status')) {
             $race->status = $request->status;

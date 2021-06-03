@@ -29,6 +29,6 @@ class Vote extends Model
     }
 
     public function rounds(){
-        return $this->has(Round::class);
+        return $this->hasMany(Round::class);
     }
 }

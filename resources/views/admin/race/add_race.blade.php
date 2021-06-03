@@ -4,7 +4,7 @@
 Dashboard
 @endsection
 
-@section('content');
+@section('content')
  
 <div class="main-body">
     <div class="page-wrapper">
@@ -28,6 +28,18 @@ Dashboard
                                     <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="name" class="form-control" placeholder="Type your Race Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Race Type</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="type" class="form-control" placeholder="Type your Race Type">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Cup</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="cup" class="form-control" placeholder="Type your Cup">
                                     </div>
                                 </div>
                                 <div class="form-group row">

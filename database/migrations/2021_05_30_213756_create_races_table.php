@@ -16,10 +16,12 @@ class CreateRacesTable extends Migration
         Schema::create('races', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->text('name',100);
-            $table->text('details')->default('');
+            $table->text('type')->nullable();
+            $table->text('cup')->nullable();
+            $table->text('details')->nullable();
             $table->string('image')->nullable();
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

@@ -4,7 +4,7 @@
 Dashboard
 @endsection
 
-@section('content');
+@section('content')
  
 <div class="main-body">
     <div class="page-wrapper">
@@ -39,6 +39,23 @@ Dashboard
                                         <input type="text" name="name" class="form-control" placeholder="Type your Race Name" value="{{ $race->name }}">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    
+                                    <label class="col-sm-2 col-form-label">Race Type</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="name" class="form-control" placeholder="Type your Race type" value="{{ $race->type }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    
+                                    <label class="col-sm-2 col-form-label">Cup</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="cup" class="form-control" placeholder="Type your Race type" value="{{ $race->cup }}">
+                                    </div>
+                                </div>
+
+
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Details</label>
                                     <div class="col-sm-10">

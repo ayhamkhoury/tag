@@ -17,6 +17,7 @@ class Round extends Model
     protected $fillable = [
       
         'name',
+        'racetrack',
         'details',
         'map_image',
         'start_date',
@@ -39,10 +40,10 @@ class Round extends Model
     }
 
     public function drivers(){
-        return $this->hasMany(Driver::class);
+        return $this->belongsToMany(Driver::class,'round_driver');
     }
 
     public function vote(){
-        return $this->belongsToMany(Vote::class);
+        return $this->belongsTo(Vote::class,'foreign_key');
     }
 }
